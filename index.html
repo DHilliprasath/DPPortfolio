@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DHILLIPRASATH R </title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  emailjs.init("DwH6EaIDlSzDrhyhr");
+
+  const form = document.getElementById("contact-form");
+  const button = form.querySelector(".btn");
+  const btnText = button.querySelector(".text");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    button.disabled = true;
+
+    // 1️⃣ SEND MESSAGE TO YOU
+    emailjs.sendForm(
+      "service_7js58yp",
+      "template_dkv0xyb",
+      form
+    )
+    .then(() => {
+
+      // ✅ SHOW SUCCESS IMMEDIATELY
+      button.classList.add("success");
+      btnText.textContent = "Thanks";
+
+      // 2️⃣ SEND AUTO-REPLY (BACKGROUND)
+      emailjs.send(
+        "service_7js58yp",
+        "template_in44t0a",
+        {
+          name: form.name.value,
+          email: form.email.value,
+          message: form.message.value
+        }
+      );
+
+      // ⏳ Keep Thanks visible
+      setTimeout(() => {
+        button.classList.remove("success");
+        btnText.textContent = "Send Message";
+        button.disabled = false;
+        form.reset();
+      }, 5000);
+
+    })
+    .catch((error) => {
+      console.error("EmailJS Error:", error);
+      button.disabled = false;
+      btnText.textContent = "Send Message";
+      alert("❌ Message failed");
+    });
+
+  });
+
+});
+</script>
+
+
+  </head>
+  <body>
+      <nav id="desktop-nav">
+      <div class="logo">DHILLIPRASATH R</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#hprofile">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">DHILLIPRASATH R</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#profile" onclick="toggleMenu()">Home</a></li>
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Skills</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+    
+    <section id="profile">
+      <div class="section__pic-container">
+        <img src="./assets/DP.png" alt="DHILLIPRASATH R profile picture" />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">DHILLIPRASATH R</h1>
+        <p class="section__text__p2">Software Developer</p>
+        <div class="btn-container">
+          <button
+            class="btn btn-color-2"
+            onclick="window.open('./assets/DHILLIPRASATHRCV.pdf')"
+          >
+            Download CV
+          </button>
+          <button class="btn btn-color-1" onclick="location.href='./#contact'">
+            Contact Info
+          </button>
+        </div>
+        <div id="socials-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://www.linkedin.com/in/dhilliprasath95?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'"
+          />
+          <img likedin.com/
+            src="./assets/github.png"
+            alt="My Github profile"
+            class="icon"
+            onclick="location.href='https://github.com/DHilliprasath'"
+          />
+        </div>
+      </div>
+      
+    </section>
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img
+            src="./assets/laptop.avif"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Internship</h3>
+              <p>AJ WORKS <br />Software Development</p>
+            </div>
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Education</h3>
+              <p>B.Sc. Bachelors Degree<br />MCA Masters Degree</p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+              An MCA graduate with strong skills in Python, AI/ML, and full-stack development, seeking an entry-level Software Engineer 
+or Python Developer role. Hands-on experience in computer vision, conversational AI, and real-time systems, with a focus on 
+building scalable, intelligent applications.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#experience'"
+      />
+    </section>
+    <section id="experience">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title section-animated">MY Skills</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container">
+            <h2 class="experience-sub-title">Software Development</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/htmlicon.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>HTML</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/cssicon.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>CSS</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/jsicon.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>JavaScript</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/reacticon.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>React</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/pythonicon.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Python</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/sqlicon.jpg"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>SQL</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="details-container">
+            <h2 class="experience-sub-title">Software Development</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/Mysqlicon.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>MYSQL</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/postgresqlicon.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>PostgreSQL</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/giticon.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Git</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/PythonLibrariesicon.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Python Libraries</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/aitoolsicon.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>AI TOOLS</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/Pythonframeworkicon.jpg"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Python Frameworks </h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#projects'"
+      />
+    </section>
+    <section id="projects">
+  <p class="section__text__p1">Browse My Recent</p>
+  <h2 class="section-title project-animated">MY Projects</h2>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/aivoicebot.png"
+                alt="Project 1"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title"><br>AI VOICE BOT</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/DHilliprasath/AI-Voice-bot.git'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/DHilliprasath/AI-Voice-bot.git'"
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/crm.png"
+                alt="Project 2"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">REAL-TIME MULTI-OBJECT DETECTION AND TRACKING</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/DHilliprasath/OBJECT-DECETION-AND-TRACKING-SYATEM-.git'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/DHilliprasath/OBJECT-DECETION-AND-TRACKING-SYATEM-.git'"
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/crm.webp"
+                alt="Project 3"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">CUSTOMER RESOURCE MANAGEMENT</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/DHilliprasath/Customer_resource_management.git'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/DHilliprasath/Customer_resource_management.git'"
+              >
+                Live Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#contact'"
+      />
+    <section id="contact" class="contact-section">
+  <p class="section__text__p1">Get in Touch</p>
+  <h1 class="title">Contact Me</h1>
+
+  <div class="contact-main-container">
+    <!-- LEFT : FORM -->
+    <div class="contact-left">
+      
+      <!-- CONTACT FORM -->
+<form id="contact-form" class="contact-form">
+  <input type="text" name="name" placeholder="Your Name" required />
+  <input type="email" name="email" placeholder="Your Email" required />
+  <input type="text" name="subject" placeholder="Subject" required />
+  <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+  <div class="btn-wrapper">
+  <button type="submit" class="btn" id="submitBtn">
+    <span class="text">Send Message</span>
+    <span class="loader"></span>
+    <svg class="check" viewBox="0 0 52 52">
+      <path d="M14 27 l7 7 l17 -17" />
+    </svg>
+  </button>
+</div>
+
+</form>
+
+      
+      <!-- LinkedIn -->
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img src="./assets/linkedin.png" class="icon contact-icon" />
+          <a href="https://www.linkedin.com/in/dhilliprasath95" target="_blank">
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT : INFO -->
+    <div class="contact-right">
+      <h1>Contact Info</h1>
+      <div class="info-item">
+        <h4>Name</h4>
+        <p><img
+            src="./assets/nameicon.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='8489860965"
+          /><a href="#profile"
+   style="
+     display:inline-block;
+     transition: transform 0.3s ease, color 0.3s ease;
+     text-decoration:none;
+     color:#000;
+   "
+   onmouseover="this.style.transform='scale(1.15)'; this.style.color='#ff6a00'"
+   onmouseout="this.style.transform='scale(1)'; this.style.color='#000'"
+>
+  <b>DHILLIPRASATH R</b>
+</a>
+
+      </div>
+
+      <div class="info-item icon-row">
+        <h4>Phone</h4>
+        <p><img
+            src="./assets/phoneicon.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='8489860965"
+          /><a href="tel:+918489860965"
+   style="
+     display:inline-block;
+     transition: transform 0.3s ease, color 0.3s ease;
+     text-decoration:none;
+     color:inherit;
+     cursor:pointer;
+   "
+   onmouseover="this.style.transform='scale(1.15)'; this.style.color='#ff6a00'"
+   onmouseout="this.style.transform='scale(1)'; this.style.color='inherit'"
+>
+  <b>+91 8489860965</b>
+</a>
+</p>
+      </div>
+
+      <div class="info-item icon-row">
+        <h4>Email</h4>
+        <p><img
+            src="./assets/gmailicon.png"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='mailto:dhilliprasath952003@gmail.com'"
+          /> <a href="mailto:dhilliprasath952003@gmail.com"
+   style="
+     display:inline-block;
+     transition: transform 0.3s ease, color 0.3s ease;
+     text-decoration:none;
+     color:#333;
+   "
+   onmouseover="this.style.transform='scale(1.12)'; this.style.color='#ff6a00'"
+   onmouseout="this.style.transform='scale(1)'; this.style.color='#333'"
+>
+  <b>dhilliprasath952003@gmail.com</b>
+</a>
+</p>
+      </div>
+
+      <div class="info-item">
+        <h4>Address</h4>
+        <p><img
+            src="./assets/locationicon.jpg"
+            alt="My LinkedIn profile"
+            class="icon"
+            onclick="location.href='https://www.google.com/maps?q=kalambattu,velloreTamil'"
+          /><a href="https://www.google.com/maps?q=kalambattu,velloreTamil"><b
+  style="
+    display:inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+    cursor:default;
+  "
+  onmouseover="this.style.transform='scale(1.12)'; this.style.color='#ff6a00'"
+  onmouseout="this.style.transform='scale(1)'; this.style.color='inherit'"
+>
+  Vellore, Tamil Nadu .
+</b>
+</a></p>
+      </div>
+
+      <div class="info-item">
+        <h4>Location</h4>
+        <iframe
+          src="https://www.google.com/maps?q=kalambattu,velloreTamil Nadu&output=embed"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <footer class="site-footer">
+
+  <!-- Clouds -->
+  <div class="cloud one"></div>
+  <div class="cloud two"></div>
+
+  <!-- Footer Content -->
+  <nav class="footer-nav">
+    <ul class="footer-links">
+      <li><a href="#profile">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <p class="footer-copy">
+    © 2025 Dhilliprasath. All Rights Reserved.
+  </p>
+
+</footer>
+
+
+    <script src="script.js"></script>
+  </body>
+</html>
